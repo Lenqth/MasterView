@@ -1,0 +1,19 @@
+﻿<Window x:Class="MathtodonViewer.Sandbox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MathtodonViewer"
+        xmlns:wpfmath="clr-namespace:WpfMath.Controls;assembly=WpfMath"
+        mc:Ignorable="d"
+        Title="Sandbox" Height="450" Width="800">
+    <Grid>
+        <StackPanel HorizontalAlignment="Stretch" Margin="5,5,5,5">
+            <wpfmath:FormulaControl MinHeight="50" Formula="\frac{250}{\sqrt[4]{2}}(\risingdotseq 220.2)" Foreground="Red" />
+            <wpfmath:FormulaControl MinHeight="50" Formula="$6.2×10^{19}" Foreground="Red" />
+            <wpfmath:FormulaControl MinHeight="50" Formula="$\sum_{k=1}^{n}\bigg(\sum_{l=1}^{2^{k-1}}\big(\frac{t}{2}(2l-1)\pi\big)\bigg)=\frac{4^n-1}{6}\pi t" Foreground="Red" />
+            <wpfmath:FormulaControl MinHeight="50" Formula="t=8\times 10^{-8}~[\rm{km}]$, $n=43~[回]" Foreground="Red" />
+            <Image HorizontalAlignment="Left" Height="187" Margin="117,0,0,0" Width="221"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="MathtodonViewer.Tootbox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wpfmath="clr-namespace:WpfMath.Controls;assembly=WpfMath"
+             xmlns:local="clr-namespace:MathtodonViewer"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="330">
+    <UserControl.Resources>
+        <local:ConverterContentsToInline x:Key="ConverterContentsToInline"/>
+        <local:ConverterStyleToForeground x:Key="ConverterStyleToForeground"/>
+        <local:ConverterStyleToBorderThick x:Key="ConverterStyleToBorderThick"/>
+        <local:ConverterStyleToBorderColor x:Key="ConverterStyleToBorderColor"/>
+        <local:ConverterStyleToBGcolor x:Key="ConverterStyleToBGcolor"/>
+    </UserControl.Resources>
+    <UserControl.BorderThickness>
+        <Binding Converter="{StaticResource ConverterStyleToBorderThick}" FallbackValue="2" Mode="OneWay" Path="Style"/>
+    </UserControl.BorderThickness>
+    <UserControl.BorderBrush>
+        <Binding Converter="{StaticResource ConverterStyleToBorderColor}" FallbackValue="#ff000000" Mode="OneWay" Path="Style"/>
+    </UserControl.BorderBrush>
+    <UserControl.Background>
+        <Binding Converter="{StaticResource ConverterStyleToBGcolor}" FallbackValue="#FFaaaacc" Mode="OneWay" Path="Style"/>
+    </UserControl.Background>
+    <Grid>
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="元データ表示(デバッグ)" Click="ContextMenu_Debug_Click" />
+                <MenuItem/>
+                <MenuItem/>
+                <MenuItem/>
+            </ContextMenu>
+        </Grid.ContextMenu>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="207*"/>
+            <ColumnDefinition Width="119*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="59*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding UserName,FallbackValue=UserName}" Margin="5,5,0,0" VerticalAlignment="Top"
+               Foreground="{Binding Style, Converter={StaticResource ConverterStyleToForeground}, FallbackValue=#ff000000}" TextWrapping="WrapWithOverflow" FontSize="11"/>
+        <TextBlock Text="{Binding DateText,FallbackValue=DateText}" Margin="5,5,5,0"
+               Foreground="{Binding Style, Converter={StaticResource ConverterStyleToForeground}, FallbackValue=#ff000000}" TextAlignment="Right" TextWrapping="WrapWithOverflow" Grid.Column="1" VerticalAlignment="Top" FontSize="11"/>
+        <local:HyperRichTextBox Background="Transparent"
+                 BorderThickness="0"
+                 IsReadOnly="True"
+                 IsDocumentEnabled="True"
+                 Margin="8,5,8,20" Grid.Row="1"
+                 Foreground="{Binding Style, Converter={StaticResource ConverterStyleToForeground},
+                 FallbackValue=#ff000000}" VerticalAlignment="Top" Grid.ColumnSpan="2" FontSize="14"
+                 Document="{Binding Converter={StaticResource ConverterContentsToInline}, IsAsync=True, Mode=OneWay}"               />
+        <!-- <wpfmath:FormulaControl Grid.Row="1" Grid.ColumnSpan="2" Formula="x^2+y^2=z^2" /> -->
+
+        <!-- TextWrapping="Wrap"
+                 Text="{Binding Content,FallbackValue=Content, Mode=OneWay}" -->
+        
+        <!-- <wpfmath:FormulaControl Grid.Row="1" Grid.ColumnSpan="2" Formula="x^2+y^2=z^2" /> -->
+    </Grid>
+</UserControl>

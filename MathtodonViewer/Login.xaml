@@ -1,0 +1,21 @@
+﻿<Window x:Class="MathtodonViewer.DialogLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MathtodonViewer"
+        mc:Ignorable="d"
+        Title="Login" Height="200" Width="300">
+    <Grid>
+        <TextBox x:Name="instanceBox" HorizontalAlignment="Left" Margin="100,26,0,0" VerticalAlignment="Top" Width="150" Text="mathtod.online"/>
+        <TextBox x:Name="idBox" HorizontalAlignment="Left" Margin="100,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Text=""/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="100,85,0,0" VerticalAlignment="Top" Width="150" KeyDown="passwordBox_KeyDown"/>
+        
+        <Label Content="Instance" HorizontalAlignment="Left" Margin="40,25,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.784,0.093" Height="19" Padding="0"/>
+        <Label Content="ID" HorizontalAlignment="Left" Margin="40,62,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.784,0.093" Height="17" Padding="0"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="40,84,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.784,0.093" Height="19" Padding="0"/>
+        <Button x:Name="LoginButton" Content="ログイン" HorizontalAlignment="Left" Margin="175,126,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <CheckBox x:Name="SaveCheck" Content="保存する" HorizontalAlignment="Left" Margin="49,129,0,0" VerticalAlignment="Top" IsChecked="True" />
+
+    </Grid>
+</Window>

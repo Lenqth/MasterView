@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="MathtodonViewer.Column"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MathtodonViewer"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="250">
+    <UserControl.Resources>
+        <local:ConverterModeToHeadercolor x:Key="ConverterModeToHeadercolor"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="Top" Margin="0,0,0,0" Grid.Row="0" Grid.RowSpan="1" Grid.ColumnSpan="2" Height="20" >
+            <Grid.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="{Binding StreamState, Converter={StaticResource ConverterModeToHeadercolor}, FallbackValue=#FFbbbbbb, Mode=OneWay, TargetNullValue=#FFbbbbbb}" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Label Content="{Binding ColumnTitle , FallbackValue='Column Title'}" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Padding="5,1,1,1"/>
+        </Grid>
+        <ScrollViewer Margin="0,0,0,0" Grid.Column="0" Grid.Row="1">
+        <ItemsControl x:Name="ContentArea" Grid.Row="1" ItemsSource="{Binding Contents, FallbackValue={x:Static local:Toot.Mocks}}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:Tootbox DataContext="{Binding}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
