@@ -22,6 +22,10 @@ namespace MathtodonViewer {
 	public partial class MainWindow : Window {
 
 		Client client;
+		List<ColumnListener> listeners = new List<ColumnListener>();
+		DependencyProperty listenersProperty = DependencyProperty.Register(
+			"listeners", typeof(List<ColumnListener>), typeof(MainWindow));
+
 
 		public MainWindow() {
 			InitializeComponent();
@@ -39,16 +43,22 @@ namespace MathtodonViewer {
 		private async void Menu_Login_Click(object sender, RoutedEventArgs e) {
 			if (!await client.Initialize()) return;
 
-			column1.listener = new UserListener();
-			column2.listener = new LocalListener();
-			column3.listener = new UnionListener();
+			var column1 = new UserListener();
+			var column2 = new LocalListener();
+			var column3 = new UnionListener();
 
-			var t1 = column1.listener.LoadTimelineAndStart(client);
-			var t2 = column2.listener.LoadTimelineAndStart(client);
-			var t3 = column3.listener.LoadTimelineAndStart(client);
+			listeners.Add(column1);
+			listeners.Add(column2);
+			listeners.Add(column3);
+
+			SetValue(listenersProperty,listeners);
+
+			var t1 = column1.LoadTimelineAndStart(client);
+			var t2 = column2.LoadTimelineAndStart(client);
+			var t3 = column3.LoadTimelineAndStart(client);
 			Task.WaitAll(new Task[] { t1, t2, t3 });
+			
 		}
-
 
 
 		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
@@ -63,6 +73,13 @@ namespace MathtodonViewer {
 		private void Menu_Test_Click(object sender, RoutedEventArgs e) {
 			var s = new Sandbox();
 			s.ShowDialog();
+		}
+		private void Menu_Test2_Click(object sender, RoutedEventArgs e) {
+			var column1 = new BlankListener();
+			listeners.Add(column1);
+			var column2 = new BlankListener();
+			listeners.Add(column2);
+			SetValue(listenersProperty, listeners);
 		}
 	}
 

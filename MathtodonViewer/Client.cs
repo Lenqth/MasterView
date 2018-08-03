@@ -117,6 +117,8 @@ namespace MathtodonViewer{
 		public TimelineStreaming GetStream(string type) {
 			// string url = "https://" + client.StreamingApiUrl + "/api/v1/streaming/public";
 			string url = "https://" + BlackMagics.GetProp<string>(client, "StreamingApiUrl") + "/api/v1/streaming/" + type;
+			url = url.Replace("https:///", "https://");
+//			Uri u = new Uri(url);
 			// return new TimelineStreaming(url, client.AuthToken.AccessToken);
 			var s = BlackMagics.Constructor<TimelineStreaming>(url, client.AuthToken.AccessToken);
 			streams.Add(s);

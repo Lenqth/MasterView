@@ -41,6 +41,24 @@ namespace MathtodonViewer{
 
     }
 
+
+	public class BlankListener : ColumnListener {
+
+		TimelineStreaming stream;
+
+		public BlankListener() {
+			ColumnTitle = "デバッグ用空カラム";
+			Changed("ColumnTitle");
+		}
+
+		public override async Task GetTimelineAsync(Client client) {
+			Changed("Contents");
+		}
+
+
+		public override void StreamStart(Client client) {
+		}
+	}
 	public class LocalListener : ColumnListener {
 
 		TimelineStreaming stream;

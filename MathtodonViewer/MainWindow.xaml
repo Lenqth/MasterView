@@ -38,8 +38,10 @@
                 <MenuItem Header="*"/>
                 <MenuItem Header="*"/>
                 <MenuItem Header="テスト窓" Click="Menu_Test_Click"/>
+                <MenuItem Header="デバッグカラム" Click="Menu_Test2_Click"/>
             </MenuItem>
         </Menu>
+        <!--
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition MinWidth="40"/>
@@ -63,6 +65,33 @@
             Grid.Column="2"
             VerticalAlignment="Stretch"
             HorizontalAlignment="Left"  BorderBrush="Black" BorderThickness="3,0,0,0" />
-        </Grid>
+        </Grid> -->
+        <ScrollViewer Margin="0,0,0,0" Grid.Column="0" Grid.Row="1" VerticalContentAlignment="Stretch" VerticalScrollBarVisibility="Disabled">
+            <ItemsControl x:Name="Columns" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=listeners }">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" Margin="0,0,0,0"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition MinWidth="40" Width="300"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <local:Column DataContext="{Binding}" Grid.Column="0" Margin="0,0,0,0"/>
+                            <GridSplitter
+                                Margin="0, 0, 0, 0"
+                                ResizeDirection="Columns"
+                                ResizeBehavior="PreviousAndCurrent"
+                                Grid.Column="1"
+                                VerticalAlignment="Stretch"
+                                HorizontalAlignment="Left"  BorderBrush="Black" BorderThickness="3,0,0,0" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Window>

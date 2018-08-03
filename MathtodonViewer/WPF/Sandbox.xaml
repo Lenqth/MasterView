@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="Sandbox" Height="450" Width="800">
     <Grid>
+        <!--
         <StackPanel HorizontalAlignment="Stretch" Margin="5,5,5,5">
             <wpfmath:FormulaControl MinHeight="50" Formula="\frac{250}{\sqrt[4]{2}}(\risingdotseq 220.2)" Foreground="Red" />
             <wpfmath:FormulaControl MinHeight="50" Formula="$6.2×10^{19}" Foreground="Red" />
@@ -15,5 +16,20 @@
             <wpfmath:FormulaControl MinHeight="50" Formula="t=8\times 10^{-8}~[\rm{km}]$, $n=43~[回]" Foreground="Red" />
             <Image HorizontalAlignment="Left" Height="187" Margin="117,0,0,0" Width="221"/>
         </StackPanel>
+        
+         -->
+        <ItemsControl x:Name="Columns" Grid.Row="1" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=listeners }">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:Column DataContext="{Binding}" Margin="0,0,0,0"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
     </Grid>
 </Window>

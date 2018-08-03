@@ -27,18 +27,18 @@
             <Label Content="{Binding ColumnTitle , FallbackValue='Column Title'}" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Padding="5,1,1,1"/>
         </Grid>
         <ScrollViewer Margin="0,0,0,0" Grid.Column="0" Grid.Row="1">
-        <ItemsControl x:Name="ContentArea" Grid.Row="1" ItemsSource="{Binding Contents, FallbackValue={x:Static local:Toot.Mocks}}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <local:Tootbox DataContext="{Binding}"/>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+            <ItemsControl x:Name="ContentArea" ItemsSource="{Binding Contents, FallbackValue={x:Static local:Toot.Mocks}}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local:Tootbox DataContext="{Binding}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </ScrollViewer>
     </Grid>
 </UserControl>
