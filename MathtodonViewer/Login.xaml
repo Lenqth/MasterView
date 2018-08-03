@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MathtodonViewer"
         mc:Ignorable="d"
-        Title="Login" Height="200" Width="300">
+        Title="Login" Height="200" Width="300" Loaded="Window_Loaded">
     <Grid>
-        <TextBox x:Name="instanceBox" HorizontalAlignment="Left" Margin="100,26,0,0" VerticalAlignment="Top" Width="150" Text="mathtod.online"/>
+
+        <ComboBox IsEditable="True" x:Name="instanceBox" HorizontalAlignment="Left" Margin="100,26,0,0" VerticalAlignment="Top" Width="150" Text="mathtod.online" SelectionChanged="instanceBox_SelectionChanged"/>
         <TextBox x:Name="idBox" HorizontalAlignment="Left" Margin="100,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Text=""/>
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="100,85,0,0" VerticalAlignment="Top" Width="150" KeyDown="passwordBox_KeyDown"/>
         

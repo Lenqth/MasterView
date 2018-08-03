@@ -67,10 +67,13 @@ namespace MathtodonViewer{
 			streams.Clear();
 		}
 
-		public async Task Login() {
+		public async Task<bool> Login() {
 			Mastonet.Entities.Auth auth;
 			if (auth_client?.AuthToken == null) {
 				var d = DialogLogin.Dialog();
+				if (d?.DialogResult != true ) {
+					return false;
+				}
 				var instance = d.instance;
 				var id = d.id;
 				var pw = d.password;
@@ -88,11 +91,14 @@ namespace MathtodonViewer{
 			} else {
 				throw new System.Security.SecurityException("Login Failed");
 			}
+			return true;
 		}
 
 		public async Task<bool> Initialize() {
 			try {
-				await Login();
+				if ( !(await Login()) ) {
+					return false;
+				}
 			} catch ( Exception e ) {
 				Debug.WriteLine("Error On Login:");
 				Debug.Indent();

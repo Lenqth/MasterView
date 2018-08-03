@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathtodonViewer.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,11 @@ namespace MathtodonViewer {
 		}
 
 		private void Button_Click(object sender, RoutedEventArgs e) {
+			if (SaveCheck.IsChecked == true) {
+				var setting = SettingManager.getInstanceOrDefault(instance);
+				setting.Id = id;
+				SettingManager.Save();
+			}
 			this.DialogResult = true;
 			this.Close();
 		}
@@ -44,6 +50,16 @@ namespace MathtodonViewer {
 				var peer = (IInvokeProvider) new ButtonAutomationPeer(LoginButton);
 				peer.Invoke();
 			}
+		}
+
+		private void Window_Loaded(object sender, RoutedEventArgs e) {
+			instanceBox.ItemsSource = SettingManager.getInstanceList();
+		}
+
+		private void instanceBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+			var st = SettingManager.getInstance(e.AddedItems[0].ToString());
+			this.id = st.Id;
+			this.passwordBox.Focus();
 		}
 	}
 }

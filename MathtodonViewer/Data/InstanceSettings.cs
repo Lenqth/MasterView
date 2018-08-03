@@ -24,12 +24,12 @@ namespace MathtodonViewer.Data {
 
 	//	}
 	//}
-
+	[Serializable]
 	public class InstanceSettings {
-		string Version = "";
-		string Id = null;
-		string Password = null;
-		string InitialVector = null;
+		public string Version { get; set; } = "";
+		public string Id { get; set; } = null;
+		public string Password { get; set; } = null;
+		public string InitialVector { get; set; } = null;
 
 		public void SetEncodedPassword(string password, string master) {
 			var aes = new AesManaged();

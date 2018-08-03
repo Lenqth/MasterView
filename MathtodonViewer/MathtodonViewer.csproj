@@ -145,11 +145,12 @@
     <Compile Include="Client.cs" />
     <Compile Include="Converter\Mathtodon.cs" />
     <Compile Include="Data\InstanceSettings.cs" />
+    <Compile Include="Data\SettingManager.cs" />
+    <Compile Include="Data\Settings.cs" />
     <Compile Include="Listener.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs" />
     <Compile Include="Toot.cs" />
     <Compile Include="WPF\Column.xaml.cs">
       <DependentUpon>Column.xaml</DependentUpon>

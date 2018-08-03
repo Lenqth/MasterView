@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathtodonViewer.Data;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -31,11 +32,12 @@ namespace MathtodonViewer {
 			//			o.Mathjaxed = true ;
 			//			o.UserName = "Lenqth";
 			//			MainColumn.Children.Add(o);
+			SettingManager.Load();
 			client = new Client();
 		}
 
 		private async void Menu_Login_Click(object sender, RoutedEventArgs e) {
-			await client.Initialize();
+			if (!await client.Initialize()) return;
 
 			column1.listener = new UserListener();
 			column2.listener = new LocalListener();
@@ -51,6 +53,7 @@ namespace MathtodonViewer {
 
 		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
 			client.Close();
+			SettingManager.Save();
 		}
 
 		private void Menu_About_Click(object sender, RoutedEventArgs e) {
