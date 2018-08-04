@@ -1,8 +1,8 @@
 
+#MasterView
+##繧ｫ繝ｩ繝蠑舟astodon繝薙Η繝ｼ繧｢
 
-
-
-使用ライブラリ
+##Mathtodon蟇ｾ蠢懊∽ｸ驛ｨ謨ｰ蠑剰｡ｨ遉ｺ蜿ｯ閭ｽ
 
 AngleSharp                                        https://github.com/AngleSharp/AngleSharp/blob/master/LICENSE                                 
 Mastonet                                          https://github.com/glacasa/Mastonet/blob/master/LICENSE                                             
